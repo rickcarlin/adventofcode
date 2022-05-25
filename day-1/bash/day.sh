@@ -22,7 +22,14 @@ cnt_increases=0
 # affect the computation (this is quicker than trying to pipe it from tail)
 while read -r nextdepth ; 
 do 
-    if (( $depth < nextdepth ]]
-    depth=nextdepth
+    #printf "%s %s\n" $depth $nextdepth
+    if (( depth < nextdepth ));
+    then
+        (( cnt_increases+=1 ))
+    fi
+    #printf "old %s new %s cnt %s\n" $depth $nextdepth $cnt_increases
+    ((depth=nextdepth))
 done < $infile
+
+printf "${cnt_increases}\n"
 
