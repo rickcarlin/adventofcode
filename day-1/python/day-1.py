@@ -11,7 +11,9 @@ def main(argv):
     else:
         print( "ERROR: Missing input file" )
         print( "       Usage {} input-file-name\n".format(argv[0].split('/')[-1]) )
-  
+        exit(1)
+
+
 
 
 if __name__ == "__main__":
