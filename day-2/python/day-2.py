@@ -7,18 +7,19 @@ class Position:
         self.horizonatal = 0
         self.depth = 0
 
-    def print_vals(self):
+    def print_results(self):
         print(f'Horizinal = {self.horizonatal}')
         print(f'Depth = {self.depth}')
+        print(f'Total = {self.horizonatal * self.depth}')
 
     def process_command(self, command: str, delta: str):
-        #print(f"Command {command}, Delta {delta}")
-         
+        # Check there's a method named {command}
         if hasattr(self, command) and callable(cmd_method := getattr(self, command)):
             cmd_method(int(delta))
         else:
             print(f"Command {command} not found")
 
+    # Private methods - don't want to prefix with _ (Pthon protocol) because that would muddy the calls from process_comamand
     def forward(self, delta: int):
         #print(f"In forward")
         self.horizonatal += delta
@@ -56,9 +57,7 @@ def main(argv):
             #print( f'Command {command} delta {delta}' )   
     f.close( )
 
-    #print( "Number of Increases {}".format(cnt_increases) )
-
-    cur_position.print_vals()
+    cur_position.print_results()
 
 
 
